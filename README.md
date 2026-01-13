@@ -47,11 +47,11 @@
 ├── config/              # 全域設定檔 (Base URL, 瀏覽器參數, Timeout 設定)
 ├── pages/               # 頁面物件層 (POM) - 封裝定位器與操作方法
 │   ├── base_page.py     # 封裝 Playwright 基礎方法 (封裝等待與例外處理)
-│   ├── login_page.py    # 登入頁面邏輯
+│   ├── login_page.py    # 登入頁面邏輯(暫時隱藏)
 │   └── checkout_page.py # 結帳與交易流程邏輯
 ├── tests/               # 測試腳本層 (Test Scripts) - 撰寫業務邏輯與斷言
 │   ├── conftest.py      # Pytest Fixtures (設定瀏覽器環境、登入狀態共用)
-│   ├── test_login.py
+│   ├── test_login.py    # 暫時隱藏  
 │   └── test_checkout.py
 ├── test_data/           # 測試資料 (存放 Excel/CSV 檔案)
 ├── utils/               # 工具庫 (DB 連線器, API 輔助工具)
