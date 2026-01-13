@@ -8,7 +8,7 @@
 ## 專案簡介
 本專案是針對高併發電商交易設計的現代化 E2E 自動化測試框架。
 
-採用 Playwright 結合 Python 開發，解決了傳統工具（如 Selenium）在處理動態網頁時的不穩定問題。本框架嚴格遵循 Page Object Model (POM) 設計模式，並整合了 **MySQL 資料庫驗證與 Excel 資料驅動測試，確保從前端 UI 操作到後端帳務紀錄的一致性與精準度。
+採用 Playwright 結合 Python 開發，解決了傳統工具（如 Selenium）在處理動態網頁時的不穩定問題。本框架嚴格遵循 Page Object Model (POM) 設計模式，並整合了 MySQL 資料庫驗證與 Excel 資料驅動測試，確保從前端 UI 操作到後端帳務紀錄的一致性與精準度。
 
 ---
 
