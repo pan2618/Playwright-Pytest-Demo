@@ -1,25 +1,37 @@
 import pytest
-import allure
-from playwright.async_api import Page
-from datetime import datetime
+import os
+from playwright.async_api import async_playwright
+from pages.login_page import LoginPage # 引用您原本有的 login_page
 
-@pytest.fixture(scope="function", autouse=True)
-async def screenshot_on_failure(request, page: Page):
+# 假定 .env 有設定測試帳號
+TEST_USER = os.getenv("TEST_USER", "demo@example.com")
+TEST_PWD = os.getenv("TEST_PWD", "123456")
+
+@pytest.fixture(scope="session")
+def browser_context_args(browser_context_args):
+    """設定瀏覽器 Context (如視窗大小、語系)"""
+    return {
+        **browser_context_args,
+        "viewport": {"width": 1920, "height": 1080},
+        "locale": "zh-TW"
+    }
+
+@pytest.fixture(scope="function")
+async def authenticated_page(page):
     """
-    全域 Fixture：當測試失敗時，自動截圖並掛載到 Allure 報告中
+    [高階技巧] 自動登入的 Fixture
+    任何測試函式只要參數寫 'authenticated_page'，
+    就會獲得一個已經登入好的 page 物件。
     """
-    yield # 測試執行點
+    login_page = LoginPage(page)
     
-    # 如果測試結果為 failed
-    if request.node.rep_call.failed:
-        timestamp = datetime.now().strftime('%Y-%m-%d_%H-%M-%S')
-        screenshot_path = f"reports/screenshots/fail_{timestamp}.png"
-        
-        await page.screenshot(path=screenshot_path, full_page=True)
-        
-        # 附加到 Allure 報告
-        allure.attach.file(
-            screenshot_path, 
-            name="Failure Screenshot", 
-            attachment_type=allure.attachment_type.PNG
-        )
+    # 1. 前往首頁
+    await page.goto("/") 
+    
+    # 2. 執行登入 (假設 LoginPage 有這個方法)
+    # 這裡的邏輯可以改為檢查 storage_state 是否存在，若有直接 load，加速測試
+    await login_page.navigate_to_login()
+    await login_page.do_login(TEST_USER, TEST_PWD)
+    
+    # 3. 回傳已經登入的 page 給測試用
+    yield page
