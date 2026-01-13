@@ -1,4 +1,4 @@
-# 電商核心流程 E2E 自動化測試框架 (Playwright)
+# 電商 E2E 自動化測試框架 (Playwright)
 
 ![Python](https://img.shields.io/badge/Python-3.9%2B-blue)
 ![Playwright](https://img.shields.io/badge/Playwright-1.40%2B-orange)
