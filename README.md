@@ -6,7 +6,7 @@
 ![Status](https://img.shields.io/badge/Status-Maintained-brightgreen)
 
 ## 專案簡介
-本專案是針對**高併發電商交易系統**與**金融邏輯**設計的現代化 E2E (End-to-End) 自動化測試框架。
+本專案是針對高併發電商交易設計的現代化 E2E 自動化測試框架。
 
 採用 Playwright 結合 Python 開發，解決了傳統工具（如 Selenium）在處理動態網頁時的不穩定問題。本框架嚴格遵循 Page Object Model (POM) 設計模式，並整合了 **MySQL 資料庫驗證與 Excel 資料驅動測試，確保從前端 UI 操作到後端帳務紀錄的一致性與精準度。
 
@@ -18,12 +18,12 @@
 * 模組化架構設計 (POM)：
     實作 Page Object Model，將「頁面元素定位」與「業務測試邏輯」完全分離。當 UI 改版時，僅需維護單一頁面物件，大幅降低維護成本。
 * 網路攔截與 Mocking (Network Interception)：
-    利用 Playwright 攔截網路請求 (Network Requests)，可模擬第三方金流（如 LINE Pay）逾時或失敗的情境，驗證系統的錯誤處理機制。
-* 資料驅動測試 (Data-Driven Testing)：
+    利用 Playwright 攔截網路請求，可模擬第三方金流（如 LINE Pay）逾時或失敗的情境，驗證系統的錯誤處理機制。
+* 資料驅動測試：
     整合 `Pandas` 讀取 Excel/CSV 測試數據，透過參數化執行，單一腳本即可覆蓋多種邊界數據（例如：不同幣別、庫存臨界值）。
-* UI 與 DB 雙重驗證 (Database Consistency)：
+* UI 與 DB 雙重驗證：
     不只驗證畫面顯示成功，更在交易後自動連線 **MySQL** 資料庫，檢查訂單狀態與庫存扣減是否正確，防止帳務漏洞。
-* 視覺化除錯 (Trace Viewer)：
+* 視覺化除錯：
     測試失敗時自動保留完整的執行軌跡（包含截圖、錄影與網路封包），協助開發人員快速回放並定位問題。
 
 ---
