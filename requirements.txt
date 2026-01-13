@@ -1,4 +1,4 @@
-# 🛒 金電商核心流程 E2E 自動化測試框架 (Playwright)
+# 電商核心流程 E2E 自動化測試框架 (Playwright)
 
 ![Python](https://img.shields.io/badge/Python-3.9%2B-blue)
 ![Playwright](https://img.shields.io/badge/Playwright-1.40%2B-orange)
@@ -62,3 +62,4 @@
 ├── requirements.txt     # 專案套件依賴清單
 ├── pytest.ini           # Pytest 設定檔
 └── README.md            # 專案說明文件
+
